@@ -1,0 +1,51 @@
+html,body {
+    height: 100%;
+    font-family: 'Segoe UI light';
+    word-wrap: break-word;
+}
+h1,h2,h3,h4,h5,h6{
+    margin-top: 0%;
+}
+.marginTop10 {
+    margin-top: 10px;
+}
+.marginTop30 {
+    margin-top: 30px;
+}
+.marginTop100 {
+    margin-top: 100px;
+}
+.border1 {
+    border: 1px solid black;
+}
+hr {
+    border: none;
+    height: 2px;
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+form {
+    color: white;
+}
+select, input, button {
+    color: black;
+}
+#Autobots {
+    height: 600px;
+    background: url(../images/kisspng-optimus-prime-autobot-logo.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #003344;
+}
+#Decepticons {
+    height: 600px;
+    background: url(../images/kisspng-transformers-the-game-transformers-decepticons.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e0474c;
+}
+.scrollY {
+    overflow-y: auto;
+}

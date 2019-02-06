@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="./js/lib/angular.js"></script>
+    <script src="./js/lib/jquery-2.2.4.min.js"></script>
+    <script src="./js/lib/bootstrap.min.js"></script>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/transformerController.js"></script>
+    <script src="./js/transformerService.js"></script>
+    <script src="./js/constants.js"></script>
+    
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Aequilibrium | The Transformation Company</title>
+
+</head>
+
+<body ng-app="mainApp" class="container-fluid" ng-controller="transformerCtrl">
+    <div class="col-sm-12 text-center">
+        <h1>Aequilibrium | The Transformation Company</h1>
+        <hr>
+    </div>
+    <div class="col-sm-12" ng-if="!isBattleComplete">
+        <form name="Autobots" id="Autobots" class="col-sm-6 border1 scrollY">
+            <div class="col-sm-12 text-center">
+                <h1>Autobots</h1>
+            </div>
+            <div class="col-sm-12 text-center marginTop30">
+                <label for="landHeight">Name : </label>
+                <input type="text" name="autobotName" id="autobotName" placeholder="Add Name" ng-model="autobot.name" required>
+            </div>
+            <div class="col-sm-12 text-center marginTop30">
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">STRENGTH : </label>
+                    <select name="STRENGTH" id="STRENGTH" ng-model="autobot.STRENGTH" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">INTELLIGENCE : </label>
+                    <select name="INTELLIGENCE" id="INTELLIGENCE" ng-model="autobot.INTELLIGENCE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">SPEED : </label>
+                    <select name="SPEED" id="SPEED" ng-model="autobot.SPEED" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">ENDURANCE : </label>
+                    <select name="ENDURANCE" id="ENDURANCE" ng-model="autobot.ENDURANCE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">RANK : </label>
+                    <select name="RANK" id="RANK" ng-model="autobot.RANK" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">COURAGE : </label>
+                    <select name="COURAGE" id="COURAGE" ng-model="autobot.COURAGE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">FIREPOWER : </label>
+                    <select name="FIREPOWER" id="FIREPOWER" ng-model="autobot.FIREPOWER" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12"><label for="landHeight">SKILL : </label>
+                    <select name="SKILL" id="SKILL" ng-model="autobot.SKILL" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+            </div>
+            <div class="col-sm-12 marginTop10 text-center">
+                <button type="submit" class="btn-lg" name="ADD" ng-click="Autobots.$valid && addAutobot(autobot)">ADD AUTOBOT</button>
+            </div>
+            <div class="col-sm-12 marginTop100 scrollY">
+                <h3>Autobots In Battle : <br><span ng-repeat="autobot in autobots"><br>{{autobot.name}} - {{autobot.STRENGTH}}, {{autobot.INTELLIGENCE}}, 
+                        {{autobot.SPEED}}, {{autobot.ENDURANCE}}, {{autobot.RANK}}, {{autobot.COURAGE}}, {{autobot.FIREPOWER}}, {{autobot.SKILL}}
+                </span></h3>
+            </div>
+        </form>
+        <form name="Decepticons" id="Decepticons" class="col-sm-6 border1 scrollY">
+            <div class="col-sm-12 text-center">
+                <h1>Decepticons</h1>
+            </div>
+            <div class="col-sm-12 text-center marginTop30">
+                <label for="landHeight">Name : </label>
+                <input type="text" name="decepticonName" id="decepticonName" placeholder="Add Name" ng-model="decepticon.name" required>
+            </div>
+            <div class="col-sm-12 text-center marginTop30">
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">STRENGTH : </label>
+                    <select name="STRENGTH" id="STRENGTH" ng-model="decepticon.STRENGTH" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">INTELLIGENCE : </label>
+                    <select name="INTELLIGENCE" id="INTELLIGENCE" ng-model="decepticon.INTELLIGENCE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">SPEED : </label>
+                    <select name="SPEED" id="SPEED" ng-model="decepticon.SPEED" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">ENDURANCE : </label>
+                    <select name="ENDURANCE" id="ENDURANCE" ng-model="decepticon.ENDURANCE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">RANK : </label>
+                    <select name="RANK" id="RANK" ng-model="decepticon.RANK" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">COURAGE : </label>
+                    <select name="COURAGE" id="COURAGE" ng-model="decepticon.COURAGE" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">FIREPOWER : </label>
+                    <select name="FIREPOWER" id="FIREPOWER" ng-model="decepticon.FIREPOWER" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <label for="landHeight">SKILL : </label>
+                    <select name="SKILL" id="SKILL" ng-model="decepticon.SKILL" ng-options="r for r in range" required><option value=""></option></select>
+                </div>
+            </div>
+            <div class="col-sm-12 marginTop10 text-center">
+                <button type="submit" class="btn-lg" name="ADD" ng-click="Decepticons.$valid && addDecepticon(decepticon)">ADD DECEPTICON</button>
+            </div>
+            <div class="col-sm-12 marginTop100 scrollY">
+                <h3>Decepticons In Battle :
+                    <br>
+                    <span ng-repeat="decepticon in decepticons">
+                        <br>{{decepticon.name}} - {{decepticon.STRENGTH}}, {{decepticon.INTELLIGENCE}}, {{decepticon.SPEED}}, {{decepticon.ENDURANCE}},
+                        {{decepticon.RANK}}, {{decepticon.COURAGE}}, {{decepticon.FIREPOWER}}, {{decepticon.SKILL}}
+                    </span>
+                </h3>
+            </div>
+        </form>
+        <div class="col-sm-12 text-center">
+            <button class="btn-lg" name="startBattle" ng-click="startBattle()">START BATTLE</button>
+        </div>
+    </div>
+    <div class="col-sm-12" ng-if="isBattleComplete">
+        <div>
+            <h1>Number of Battles : {{numberOfBattles}}</h1>
+            <h1>Winning Team : {{winningTeam}}</h1>
+            <h1>Survivors from the losing Team ({{losingTeam}}): {{survivors}}</h1>
+        </div>
+        <div class="col-sm-12 text-center">
+            <h3>Go back to building teams :
+                <button class="btn" name="buildTeams" ng-click="init()">BUILD TEAMS</button>
+            </h3>
+        </div>
+    </div>
+</body>
+
+</html>
