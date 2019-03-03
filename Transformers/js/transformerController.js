@@ -57,27 +57,29 @@ transformerCompany.controller('transformerCtrl', ['$scope', 'transformerService'
                     if(a.COURAGE >= d.COURAGE + 4 && a.STRENGTH >= d.STRENGTH + 3) {
                         $scope.autobotWin(i);
                     }
-                    if(d.COURAGE >= a.COURAGE + 4 && d.STRENGTH >= a.STRENGTH + 3) {
+                    else if(d.COURAGE >= a.COURAGE + 4 && d.STRENGTH >= a.STRENGTH + 3) {
                         $scope.decepticontWin(i);
                     }
-                    if(a.SKILL >= d.SKILL + 3) {
+                    else if(a.SKILL >= d.SKILL + 3) {
                         $scope.autobotWin(i);
                     }
-                    if(d.SKILL >= a.SKILL + 3) {
-                        $scope.decepticontWin(i);
-                    }
-                    let aOverall = a.STRENGTH + a.INTELLIGENCE + a.SPEED + a.ENDURANCE + a.FIREPOWER;
-                    let dOverall = d.STRENGTH + d.INTELLIGENCE + d.SPEED + d.ENDURANCE + d.FIREPOWER;
-                    if(aOverall>dOverall) {
-                        $scope.autobotWin(i);
-                    }
-                    else if(dOverall>aOverall) {
+                    else if(d.SKILL >= a.SKILL + 3) {
                         $scope.decepticontWin(i);
                     }
                     else {
-                        numberOfBattles++;
-                        autobots[i] = {};
-                        decepticons[i] = {};
+                        let aOverall = a.STRENGTH + a.INTELLIGENCE + a.SPEED + a.ENDURANCE + a.FIREPOWER;
+                        let dOverall = d.STRENGTH + d.INTELLIGENCE + d.SPEED + d.ENDURANCE + d.FIREPOWER;
+                        if (aOverall > dOverall) {
+                            $scope.autobotWin(i);
+                        }
+                        else if (dOverall > aOverall) {
+                            $scope.decepticontWin(i);
+                        }
+                        else {
+                            numberOfBattles++;
+                            autobots[i] = {};
+                            decepticons[i] = {};
+                        }
                     }
                 }
             }
